@@ -1,0 +1,253 @@
+body {
+	margin: 0;
+    font-family: 'Work Sans', sans-serif;
+	font-weight: 100;
+	padding: 0;
+}
+
+/* Navigation styles start here */
+
+header{
+	text-align: center;
+	position: fixed;
+	z-index: 2;
+	width: 100%;
+	border: 1px solid #ccc;
+	box-shadow: 1px 1px #ccc;
+	background-color: #2f889a;
+	color: white;
+	top: 0;
+}
+
+header > h1 {
+	font-size: 50%;
+}
+
+.nav-toggle {
+	display: none;
+}
+
+.nav-toggle-label {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-left: 2em;
+	height: 100%;
+	display: flex;
+	align-items: center; 
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+	display: block;
+	background: white;
+	height: 2px;
+	width: 2em;
+	border-radius: 2px;
+	position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+	content: '';
+	position: absolute;
+}
+
+.nav-toggle-label span::before {
+	bottom: 7px
+}
+
+.nav-toggle-label span::after {
+	top: 7px
+}
+
+nav {
+	position: absolute;
+	text-align: left;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	transform: scale(1, 0);
+	transform-origin: top; 
+	transition: transform 400ms ease-in-out;
+}
+
+nav > ul {
+	background-color: black;
+	margin: 0;
+	padding: 3% 0 1% 0;
+	list-style: none;
+}
+
+nav li {
+	margin-bottom: 1em;
+	margin-left: 1em;
+	/* background: black; */
+}
+
+#search-button-menu {
+	background-color: #428bca;
+	color: white;
+	padding:4px 15px;
+	border: none;
+	position:relative;
+    left:-8px;
+	cursor: pointer;
+}
+
+#search-bar-menu {
+	padding: 4px 15px;
+	background: #d2d8d8;
+	border:0px solid #dbdbdb;
+}
+
+nav a {
+	color: #f5f5f5;
+ 	text-decoration: none;
+	font-size: 1rem;
+	/* text-transform: uppercase; */
+	opacity: 0;
+	transition: opacity 150ms ease-in-out; 
+}
+
+.nav-toggle:checked ~ nav {
+	transform: scale(1, 1);
+}
+
+.nav-toggle:checked ~ nav a {
+	opacity: 1;
+	transition: opacity 250ms ease-in-out 250ms;
+} 
+
+/* Navigation styles end here */
+
+/* Media queries for the navigation bar begins here*/
+
+@media screen and (min-width: 768px) {
+	.nav-toggle-label {
+		display: none;
+	}
+	
+	header{   
+		display: grid;
+		grid-template-columns: 1fr auto minmax(600px, 2fr);
+	}
+
+	.logo {
+		grid-column: 0 / 2;
+	}
+	
+	nav {
+		all: unset;
+		grid-column: 3/4;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		margin-right: 3em;
+	}
+	
+	nav a {
+		opacity: 1;
+		padding: .6em 1em;
+		/* border: 1px solid; */
+		/* background: white; */
+		/* border: 1px solid  #2f889a; */
+		color: white;
+	}
+	
+	nav ul {
+		display: flex;
+		background: none;
+	    padding: 0;
+	}
+	
+	nav li {
+		margin-left: 3em;
+		margin-bottom: 0;	
+		/* background-color: white; */
+	}
+}
+
+/* Media queries for the navigation bar ends here */
+
+
+.entry-details-container {
+	max-width: 700px;
+	margin: 8% auto;
+}
+
+.entry-details-container .entry-picture {
+	max-width: 100%;
+	height: auto;
+}
+
+.entry-details-container .entry-date {
+	font-size: 110%;
+	margin: 2% 0 2% 0;
+}
+
+.entry-details-container .diary-body > p {
+	font-size: 110%;
+}
+
+.entry-details-container .book-details {
+	width: 100%;
+	text-align: center;
+	margin: 5% 0 5% 0;
+}
+
+.book-details .book-title {
+	color: red;
+	font-weight: 700;
+	font-size: 90%;
+}
+
+.book-details .book-title-paragraph em {
+	color: red;
+	font-weight: 100;
+	font-size:90%;
+}
+
+.entry-details-container .user-details {
+	text-align: center;
+	margin: 20% 0 10% 0;
+}
+
+
+.entry-details-container .user-details .user-photo > img {
+	border-radius: 50%;
+}
+
+.entry-details-container .user-details .about-user {
+	font-size: 80%;
+	color: red
+}
+
+footer {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #d2d8d8;
+  text-align: center;
+}
+
+@media screen and (max-width: 1366px) {
+	.entry-details-container {
+		margin: 13% auto;
+	}
+}
+
+
+@media screen and (max-width: 812px) {
+	.entry-details-container {
+		margin: 18% auto;
+	}
+}
+
+@media screen and (max-width: 568px) {
+	.entry-details-container {
+		margin: 20% auto;
+	}
+}
