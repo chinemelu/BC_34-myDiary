@@ -1,0 +1,33 @@
+{
+  "name": "mydiary",
+  "version": "1.0.0",
+  "description": "Application that allows user to pen thoughts and feelings",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha",
+    "server": "nodemon --watch server --exec babel-node server/app",
+    "babel-node": "babel-node --presets env"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chinemelu/BC_34-myDiary.git"
+  },
+  "author": "Chinemelu Anthony Nwosu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chinemelu/BC_34-myDiary/issues"
+  },
+  "homepage": "https://github.com/chinemelu/BC_34-myDiary#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.18.1"
+  }
+}
