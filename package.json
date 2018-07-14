@@ -4,10 +4,10 @@
   "description": "Application that allows user to pen thoughts and feelings",
   "main": "app.js",
   "scripts": {
-    "test": "mocha",
     "server": "nodemon --watch server --exec babel-node server/app",
-    "babel-node": "babel-node --presets env"
-
+    "babel-node": "babel-node --presets env",
+    "test": "SET NODE_ENV=test && mocha --require babel-core/register server/test/**/*.js"
+    
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,11 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "eslint": "^5.1.0",
+    "eslint-config-airbnb": "^17.0.0",
+    "mocha": "^5.2.0",
     "morgan": "^1.9.0",
     "nodemon": "^1.18.1"
   }
