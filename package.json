@@ -7,7 +7,6 @@
     "server": "nodemon --watch server --exec babel-node server/app",
     "babel-node": "babel-node --presets env",
     "test": "SET NODE_ENV=test && mocha --require babel-core/register server/test/**/*.js"
-    
   },
   "repository": {
     "type": "git",
@@ -21,7 +20,8 @@
   "homepage": "https://github.com/chinemelu/BC_34-myDiary#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "validator": "^10.4.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
