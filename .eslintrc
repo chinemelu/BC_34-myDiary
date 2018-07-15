@@ -6,6 +6,9 @@
     "es6": true,
     "mocha": true
   },
+  "plugins": [
+    "chai-friendly"
+  ],
   "rules": {
     "one-var": 0,
     "one-var-declaration-per-line": 0,
@@ -16,7 +19,9 @@
     "curly": ["error", "multi-line"],
     "import/no-unresolved": [2, { "commonjs": true }],
     "no-shadow": ["error", { "allow": ["req", "res", "err"] }],
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],    
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    "no-unused-expressions": 0,
+    "chai-friendly/no-unused-expressions": 2,  
     "valid-jsdoc": ["error", {
       "requireReturn": true,
       "requireReturnType": true,

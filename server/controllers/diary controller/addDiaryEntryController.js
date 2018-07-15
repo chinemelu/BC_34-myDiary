@@ -45,7 +45,9 @@ class diarycontroller {
         data: newDiaryEntry
       });
     } else {
-      res.status(400).json(errors);
+      res.status(400).json({
+        errors
+      });
     }
   }
 }
