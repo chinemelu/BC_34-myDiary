@@ -6,8 +6,9 @@ const postDiaryEntryValidator = (data) => {
   // Sanitise the data to prevent empty spaces counting as characters
   data.title = data.title.trim();
   data.description = data.description.trim();
+  data.privacy = data.privacy.trim();
 
-  // Validate the title and description data
+  // Validate the title, description and privacy data
 
   if (validator.isEmpty(data.title)) {
     errors.title = 'Title field is required';
@@ -25,6 +26,11 @@ const postDiaryEntryValidator = (data) => {
         + 'least one alphabet';
   } else if (!validator.isLength(data.description, { min: 4 })) {
     errors.description = 'Description must have a minimum length of 4 characters';
+  }
+
+  if (!validator.isEmpty(data.privacy) && (!validator.equals(data.privacy, 'private', 'public')
+  && !validator.equals(data.privacy, 'public'))) {
+    errors.privacy = 'Please enter private or public';
   }
 
   return {
