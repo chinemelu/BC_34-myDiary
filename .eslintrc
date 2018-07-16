@@ -21,6 +21,7 @@
     "no-shadow": ["error", { "allow": ["req", "res", "err"] }],
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
     "no-unused-expressions": 0,
+    "linebreak-style": 0,
     "chai-friendly/no-unused-expressions": 2,  
     "valid-jsdoc": ["error", {
       "requireReturn": true,
