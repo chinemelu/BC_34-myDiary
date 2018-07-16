@@ -12,7 +12,9 @@ class diarycontroller {
    * @returns {JSON} returns a JSON object
    */
   static addEntry(req, res) {
+    // check if there are any validation errors
     const { errors, isValid } = postDiaryEntryValidator(req.body);
+
     if (isValid) {
       const {
         title,
@@ -30,7 +32,7 @@ class diarycontroller {
       };
 
       const newDiaryEntry = {
-        id: dummyDatabase.length + 1,
+        id: dummyDatabase.slice(-1)[0].id + 1,
         title,
         description,
         privacy: isPrivacyEmpty()
