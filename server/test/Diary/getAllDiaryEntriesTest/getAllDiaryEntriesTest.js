@@ -7,7 +7,7 @@ chai.use(chaiHttp);
 
 describe('diary entries', () => {
   describe('GET: /api/v1/entries', () => {
-    it('it should list all diary entries', (done) => {
+    it('it should list all diary entries if database table has an entry', (done) => {
       chai.request(server)
         .get('/api/v1/entries')
         .end((err, res) => {
