@@ -2,7 +2,6 @@ import validator from 'validator';
 
 const postDiaryEntryValidator = (data) => {
   const errors = {};
-
   // Sanitise the data to prevent empty spaces counting as characters
   data.title = data.title.trim();
   data.description = data.description.trim();
