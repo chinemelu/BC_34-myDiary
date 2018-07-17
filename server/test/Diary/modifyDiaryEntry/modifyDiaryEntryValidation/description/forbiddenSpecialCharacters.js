@@ -4,7 +4,7 @@ import server from '../../../../../app';
 
 chai.should();
 chai.use(chaiHttp);
-describe('diary entries', () => {
+describe('modify diary entry', () => {
   describe('PUT: /api/v1/entries/<entry Id>', () => {
     it('it should respond with an error message if description field consists of forbidden special characters', (done) => {
       const diaryEntry = {
