@@ -1,5 +1,4 @@
-import dummyDatabase from '../../data structures/dummyDatabase';
-
+import dummyDatabase from '../../../data structures/dummyDatabase';
 /**
  * @class diarycontroller
  */
@@ -12,7 +11,6 @@ class diarycontroller {
      */
   static getAllEntries(req, res) {
     // after authentication
-
     // Check if diary entries table in database is empty
     if (dummyDatabase.length > 0) {
       res.status(200).json({
@@ -28,5 +26,4 @@ class diarycontroller {
     }
   }
 }
-
 export default diarycontroller;
