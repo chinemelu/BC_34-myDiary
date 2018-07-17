@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/chinemelu/BC_34-myDiary.svg?branch=develop)](https://travis-ci.org/chinemelu/BC_34-myDiary)[![Coverage Status](https://coveralls.io/repos/github/chinemelu/BC_34-myDiary/badge.svg?branch=develop)](https://coveralls.io/github/chinemelu/BC_34-myDiary?branch=develop)
+[![Maintainability](https://api.codeclimate.com/v1/badges/37e7f8cade3573f23a57/maintainability)](https://codeclimate.com/github/chinemelu/BC_34-myDiary/maintainability)
 
 # BC_34-myDiary
 MyDiary is an online journal where users can pen down their thoughts and feelings
