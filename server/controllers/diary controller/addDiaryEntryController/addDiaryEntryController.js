@@ -5,7 +5,7 @@ import addDiaryEntryDatabaseCall from './databaseCall';
  */
 class diarycontroller {
 /**
-   * @description add diaryentry
+   * @description add diary entry
    * @param {*} req http request
    * @param {*} res http response
    * @returns {JSON} returns a JSON object
