@@ -1,14 +1,11 @@
 import postDiaryEntryValidator from '../../../validators/postDiaryEntryValidator';
 import addDiaryEntryDatabaseCall from './databaseCall';
-// import dummyDatabase from '../../../data structures/dummyDatabase';
-// import isPrivacyEmpty from './isPrivacyEmpty';
-
 /**
  * @class diarycontroller
  */
 class diarycontroller {
 /**
-   * @description add diaryentry
+   * @description add diary entry
    * @param {*} req http request
    * @param {*} res http response
    * @returns {JSON} returns a JSON object
@@ -25,6 +22,4 @@ class diarycontroller {
     }
   }
 }
-
-
 export default diarycontroller;

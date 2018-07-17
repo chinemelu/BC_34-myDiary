@@ -4,8 +4,8 @@ import server from '../../../../../app';
 
 chai.should();
 chai.use(chaiHttp);
-describe('diary entries', () => {
-  describe('POST: /api/v1/entries', () => {
+describe('modify diary entry', () => {
+  describe('PUT: /api/v1/entries', () => {
     it('it should respond with an error message if description field is empty', (done) => {
       const diaryEntry = {
         title: 'A boy has no name',
