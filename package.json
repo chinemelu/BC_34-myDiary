@@ -6,7 +6,7 @@
   "scripts": {
     "server": "nodemon --watch server --exec babel-node server/app",
     "babel-node": "babel-node --presets env",
-    "test": "SET NODE_ENV=test && mocha --require babel-core/register server/test/**/*.js"
+    "test": "mocha --require babel-core/register server/test/**/*.js"
   },
   "repository": {
     "type": "git",
