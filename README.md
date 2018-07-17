@@ -1,8 +1,7 @@
+[![Build Status](https://travis-ci.org/chinemelu/BC_34-myDiary.svg?branch=develop)](https://travis-ci.org/chinemelu/BC_34-myDiary)
+
 # BC_34-myDiary
 MyDiary is an online journal where users can pen down their thoughts and feelings
-
-# Events-Manager
-An application that helps admin to manage its events centres, and users to manage its events
 
 ## Getting Started
 * Click on the "Clone or download" button.
