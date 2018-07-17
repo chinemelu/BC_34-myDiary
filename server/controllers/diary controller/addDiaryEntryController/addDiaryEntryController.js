@@ -1,8 +1,5 @@
 import postDiaryEntryValidator from '../../../validators/postDiaryEntryValidator';
 import addDiaryEntryDatabaseCall from './databaseCall';
-// import dummyDatabase from '../../../data structures/dummyDatabase';
-// import isPrivacyEmpty from './isPrivacyEmpty';
-
 /**
  * @class diarycontroller
  */
@@ -25,6 +22,4 @@ class diarycontroller {
     }
   }
 }
-
-
 export default diarycontroller;
