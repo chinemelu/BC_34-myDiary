@@ -24,6 +24,14 @@ MyDiary is an online journal where users can pen down their thoughts and feeling
   ----------------------------------------------------------------------
     29 passing
   ```
+
+## Deployment
+* copy this link `https://bc-34-my-app.herokuapp.com/`
+* Using Postman, and the url above as a prefix, e.g `https://bc-34-my-app.herokuapp.com/api/v1/entries`
+utilise every endpoint in this application a with any of these headers: 
+key: Content-Type value: `application/json`  
+key: Content-Type value: `application/x-www-form-urlencoded`
+
   
 ### Front End Dependencies
 * [Font Awesome](http://fontawesome.io/) -font and CSS toolkit
