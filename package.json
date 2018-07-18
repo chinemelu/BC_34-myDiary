@@ -11,7 +11,7 @@
     "coveralls": "nyc npm test&& nyc report --reporter=text-lcov | coveralls",
     "heroku-postbuild": "npm run build-server",
     "build-server": " node ./node_modules/babel-cli/bin/babel.js -d ./build ./server",
-    "start": "node ./build/server/app"
+    "start": "node ./build/app"
   },
   "repository": {
     "type": "git",
