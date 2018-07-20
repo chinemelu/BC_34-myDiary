@@ -4,16 +4,17 @@ import server from '../../../../../app';
 
 chai.should();
 chai.use(chaiHttp);
-describe('diary entries', () => {
-  describe('PUT: /api/v1/entries/<entry Id>', () => {
-    it('it should respond with an error message if title field has fewer than 4 characters', (done) => {
+
+describe('Add diary entries', () => {
+  describe('POST: /api/v1/entries', () => {
+    it('it should respond with an error message if title field is empty', (done) => {
       const diaryEntry = {
-        title: 'blo',
-        description: 'Boom',
-        privacy: 'private'
+        title: '',
+        description: 'update description 1',
+        privacy: 'public'
       };
       chai.request(server)
-        .put('/api/v1/entries/1')
+        .post('/api/v1/entries')
         .send(diaryEntry)
         .end((err, res) => {
           res.should.have.status(400);
@@ -23,8 +24,7 @@ describe('diary entries', () => {
           res.body.errors.should.be.a('object');
           res.body.errors.should.have.property('title');
           res.body.errors.title.should.be.a('string');
-          res.body.errors.title.should.eql('Title must have a minimum length of 4 characters and a maximum \n'
-          + 'length of 70 characters');
+          res.body.errors.title.should.eql('Title field is required');
           done();
         });
     });

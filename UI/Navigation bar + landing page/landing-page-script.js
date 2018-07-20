@@ -10,21 +10,20 @@ const formModal = document.getElementsByClassName('user-modal')[0],
   backToLoginLink = formForgotPassword.querySelector('.cd-form-bottom-message a'),
   mainNav = document.getElementsByClassName('main-nav');
 
-
-const loginSelected = () => {
-  formLogin.classList.add('is-selected');
-  formSignup.classList.remove('is-selected');
+// check if signup is selected or not
+const isSignupSelected = (bool) => {
+  if (bool) {
+    formLogin.classList.remove('is-selected');
+    formSignup.classList.add('is-selected');
+    tabLogin[0].classList.remove('selected');
+    tabSignup[0].classList.add('selected');
+  } else {
+    formLogin.classList.add('is-selected');
+    formSignup.classList.remove('is-selected');
+    tabLogin[0].classList.add('selected');
+    tabSignup[0].classList.remove('selected');
+  }
   formForgotPassword.classList.remove('is-selected');
-  tabLogin[0].classList.add('selected');
-  tabSignup[0].classList.remove('selected');
-};
-
-const signupSelected = () => {
-  formLogin.classList.remove('is-selected');
-  formSignup.classList.add('is-selected');
-  formForgotPassword.classList.remove('is-selected');
-  tabLogin[0].classList.remove('selected');
-  tabSignup[0].classList.add('selected');
 };
 
 // show the selected form
@@ -32,9 +31,9 @@ const signupSelected = () => {
 mainNav[0].addEventListener('click', (event) => {
   formModal.classList.add('is-visible');
   if (event.target.matches('.cd-signup')) {
-    signupSelected();
+    isSignupSelected(true);
   } else if (event.target.matches('.cd-signin')) {
-    loginSelected();
+    isSignupSelected(false);
   }
 });
 
@@ -57,9 +56,9 @@ document.addEventListener('keyup', (event) => {
 formModalTab[0].addEventListener('click', (event) => {
   event.preventDefault();
   if (event.target.matches('#signin-switcher')) {
-    loginSelected();
+    isSignupSelected(false);
   } else {
-    signupSelected();
+    isSignupSelected(true);
   }
 });
 
@@ -99,5 +98,5 @@ forgotPasswordLink.addEventListener('click', (event) => {
 // back to login from the forgot-password-form
 backToLoginLink.addEventListener('click', () => {
   formModalTab[0].classList.remove('not-visible');
-  loginSelected();
+  isSignupSelected(false);
 });

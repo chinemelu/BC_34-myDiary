@@ -1,5 +1,5 @@
 import dummyDatabase from '../../../data structures/dummyDatabase';
-import validIdValidator from '../../../validators/validIdValidator';
+import validIdValidator from '../../../validators/validIdValidator/validIdValidator';
 
 const deleteDiaryEntryDatabaseCall = (req, res, callback) => {
   const { id } = req.params; // Get id from params
