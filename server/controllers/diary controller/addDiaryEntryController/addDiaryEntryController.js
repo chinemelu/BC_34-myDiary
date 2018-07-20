@@ -1,4 +1,4 @@
-import postDiaryEntryValidator from '../../../validators/postDiaryEntryValidator';
+import postDiaryEntryValidator from '../../../validators/postDiaryEntryValidator/index';
 import addDiaryEntryDatabaseCall from './databaseCall';
 /**
  * @class diarycontroller

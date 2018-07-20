@@ -5,7 +5,7 @@ import server from '../../../app';
 chai.should();
 chai.use(chaiHttp);
 
-describe('diary entries', () => {
+describe('Add diary entries', () => {
   describe('POST: /api/v1/entries', () => {
     it('should add a SINGLE diary entry when there are no errors', (done) => {
       const diaryEntry = {

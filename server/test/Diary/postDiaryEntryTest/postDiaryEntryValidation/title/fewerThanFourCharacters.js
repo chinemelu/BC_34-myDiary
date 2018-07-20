@@ -4,8 +4,8 @@ import server from '../../../../../app';
 
 chai.should();
 chai.use(chaiHttp);
-describe('diary entries', () => {
-  describe('PUT: /api/v1/entries/<entry Id>', () => {
+describe('Add diary entries', () => {
+  describe('POST: /api/v1/entries', () => {
     it('it should respond with an error message if title field has fewer than 4 characters', (done) => {
       const diaryEntry = {
         title: 'blo',
@@ -13,7 +13,7 @@ describe('diary entries', () => {
         privacy: 'private'
       };
       chai.request(server)
-        .put('/api/v1/entries/1')
+        .post('/api/v1/entries')
         .send(diaryEntry)
         .end((err, res) => {
           res.should.have.status(400);
