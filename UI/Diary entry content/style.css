@@ -13,7 +13,7 @@ header{
 	z-index: 2;
 	width: 100%;
 	border: 1px solid #ccc;
-	box-shadow: 1px 1px #ccc;
+	/* box-shadow: 1px 1px #ccc; */
 	background-color: #2f889a;
 	color: white;
 	top: 0;
@@ -131,7 +131,7 @@ nav a {
 	
 	header{   
 		display: grid;
-		grid-template-columns: 1fr auto minmax(600px, 2fr);
+		grid-template-columns: 0.3fr auto minmax(700px, 2.9fr);
 	}
 
 	.logo {
@@ -166,6 +166,22 @@ nav a {
 		margin-left: 3em;
 		margin-bottom: 0;	
 		/* background-color: white; */
+	}
+
+	#search-button-menu {
+		background-color: #428bca;
+		color: white;
+		padding:4px 8px;
+		border: none;
+		position:relative;
+			left:-8px;
+		cursor: pointer;
+	}
+	
+	#search-bar-menu {
+		padding: 4px 8px;
+		background: #d2d8d8;
+		border:0px solid #dbdbdb;
 	}
 }
 
