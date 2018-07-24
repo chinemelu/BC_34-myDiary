@@ -12,7 +12,9 @@ class diarycontroller {
    */
   static addEntry(req, res) {
     // check if there are any validation errors
-    const { errors, isValid } = postDiaryEntryValidator(req.body);
+    // isEditing argument in validator is false because it's a POST endpoint
+    // Both PUT and POST endpoints share the same validator
+    const { errors, isValid } = postDiaryEntryValidator(req.body, false);
     if (isValid) {
       addDiaryEntryDatabaseCall(req, res, req.body);
     } else {

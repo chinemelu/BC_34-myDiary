@@ -1,10 +1,19 @@
 import validator from 'validator';
 
-const postDiaryEntryTitleValidator = (data) => {
+const postDiaryEntryTitleValidator = (data, isEditing, diaryEntry) => {
   // Sanitise the title field to prevent empty spaces counting as characters
   const errors = {};
-  data.title = data.title.trim();
-
+  if (isEditing === false && data.title === undefined) { // validate for undefined input value
+    data.title = '';
+  } else if (isEditing === false && data.title) { // if isEditing is false, PUT end point is on
+    data.title = data.title.trim();
+    // if isEditing is false, POST end point is on
+  } else if (isEditing === true && data.title === undefined) {
+    data.title = diaryEntry.title;
+    // Both PUT and POST share the same validator
+  } else if (isEditing === true && data.title) {
+    data.title = data.title.trim();
+  }
   // Validate the title field
   if (validator.isEmpty(data.title)) {
     errors.title = 'Title field is required';

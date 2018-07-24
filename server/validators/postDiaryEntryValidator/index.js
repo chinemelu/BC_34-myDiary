@@ -1,8 +1,7 @@
 import postDiaryEntryPrivacyValidator from './privacyValidator';
 
-const postDiaryEntryValidator = (data) => {
-  const errors = postDiaryEntryPrivacyValidator(data);
-
+const postDiaryEntryValidator = (data, isEditing, diaryEntry) => {
+  const errors = postDiaryEntryPrivacyValidator(data, isEditing, diaryEntry);
   return {
     errors,
     isValid: Object.keys(errors).length === 0
