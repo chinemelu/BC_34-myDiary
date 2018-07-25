@@ -29,9 +29,8 @@ class userController {
           errors.usernameExists = 'username exists';
         } if (user.rows[0].email === req.body.email) {
           errors.emailExists = 'email exists';
-        } if (errors) {
-          return res.status(409).json({ errors });
         }
+        return res.status(409).json({ errors });
       }
     });
   }
