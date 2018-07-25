@@ -137,7 +137,7 @@ nav a {
 	
 	header{   
 		display: grid;
-		grid-template-columns: 1fr auto minmax(600px, 2fr);
+		grid-template-columns: 0.3fr auto minmax(700px, 2.9fr);
 	}
 
 	.logo {
@@ -173,6 +173,7 @@ nav a {
 		margin-bottom: 0;	
 		/* background-color: white; */
 	}
+	
 }
 
 /* Mobile queries for the navigation bar end here */
@@ -200,7 +201,7 @@ nav a {
 	width: 100%;
 	border: none;
 	border-bottom: 1px solid #d8d8d8;
-	shadow-box: none;
+	box-shadow : none;
 	outline: none;
 } 
 

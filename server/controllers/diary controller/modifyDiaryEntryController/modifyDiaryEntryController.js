@@ -17,7 +17,9 @@ class diarycontroller {
     getSingleDiaryEntryDatabaseCall(req, res,
       (diaryEntry) => {
         // check if there are any validation errors
-        const { errors, isValid } = postDiaryEntryValidator(req.body);
+        // isEditing argument is made true because it's the PUT endpoint
+        // Both PUT and POST endpoints share the same validator
+        const { errors, isValid } = postDiaryEntryValidator(req.body, true, diaryEntry);
         if (isValid) {
           modifyDiaryEntryDatabaseCall(req, res, req.body, diaryEntry);
         } else {

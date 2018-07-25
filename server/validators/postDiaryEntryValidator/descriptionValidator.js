@@ -1,10 +1,23 @@
 import validator from 'validator';
 import postDiaryEntryTitleValidator from './titleValidator';
 
-const postDiaryEntryDescriptionValidator = (data) => {
+const postDiaryEntryDescriptionValidator = (data, isEditing, diaryEntry) => {
   // Sanitise the description field to prevent empty spaces counting as characters
-  const errors = postDiaryEntryTitleValidator(data);
-  data.description = data.description.trim();
+  const errors = postDiaryEntryTitleValidator(data, isEditing, diaryEntry);
+
+  // validate for undefined input value
+  if (isEditing === false && data.description === undefined) { // validate for undefined input value
+    data.description = '';
+    // if isEditing is false, then POST endpoint is on
+    // if isEditing is true, then PUT endpoint is on
+    // This is because both PUT and POST endpoints share the same validator
+  } else if (isEditing === false && data.description) {
+    data.description = data.description.trim();
+  } else if (isEditing === true && data.description === undefined) {
+    data.description = diaryEntry.description;
+  } else if (isEditing === true && data.description) {
+    data.description = data.description.trim();
+  }
 
   // Validate the description field
   if (validator.isEmpty(data.description)) {

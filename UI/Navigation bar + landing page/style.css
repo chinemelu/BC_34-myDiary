@@ -1,6 +1,8 @@
+/* modal signup and sign in popup css styles reference -cody House https://codepen.io/codyhouse/pen/pIrbg */
+
 html {
 	height: 100%;
-	position:: relative;
+	position: relative;
 }
 
 body {
@@ -236,7 +238,6 @@ nav a {
 }
 
 .user-modal-container .switcher li {
-	display: inline-block;
 	width: 50%;
 	float: left;
 	text-align: center;
@@ -526,7 +527,6 @@ footer {
 
 	.about-us .intro-image-text {
 		float: left;
-		display: inline-block;
 		width: 33.33%;
 		margin: 0 auto;
 	}
