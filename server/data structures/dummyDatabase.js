@@ -58,6 +58,12 @@ const dummyDatabase = [{
   description: 'My favourite food is fried rice',
   privacy: 'public'
 },
+{
+  id: 11,
+  title: 'A girl has no name',
+  description: 'Game of Thrones redefined',
+  privacy: 'public'
+}
 ];
 
 export default dummyDatabase;
