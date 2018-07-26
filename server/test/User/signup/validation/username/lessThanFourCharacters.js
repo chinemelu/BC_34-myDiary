@@ -1,22 +1,11 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../../../../../app';
-import pool from '../../../../../models/db';
 
 chai.should();
 chai.use(chaiHttp);
 
 describe('POST: /api/v1/auth/signup', () => {
-  before((done) => {
-    pool.connect() // connect to database
-      .then(client => client.query('DELETE from users')
-        .then(() => {
-        })
-        .catch(() => {
-          client.release();
-        }));
-    done();
-  });
   it('should respond with an error if the username field contains fewer than 4 characters', (done) => {
     const registrationDetails = {
       username: 'Ant',

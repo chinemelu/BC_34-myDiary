@@ -1,6 +1,6 @@
 import express from 'express';
 import addDiaryEntryController from '../controllers/diary controller/addDiaryEntryController/addDiaryEntryController';
-import getAllDiaryEntriesController from '../controllers/diary controller/getAllDiaryEntriesController/getAllDiaryEntriesController';
+import getAllUserDiaryEntriesController from '../controllers/diary controller/getAllDiaryEntriesController/getAllDiaryEntriesController';
 import getSingleDiaryEntryController from '../controllers/diary controller/getSingleDiaryEntryController/getSingleDiaryEntryController';
 import modifyDiaryEntryController from '../controllers/diary controller/modifyDiaryEntryController/modifyDiaryEntryController';
 import deleteDiaryEntryController from '../controllers/diary controller/deleteDiaryEntryController/deleteDiaryEntryController';
@@ -11,7 +11,7 @@ router.post(
   '/', addDiaryEntryController.addEntry
 );
 router.get(
-  '/', getAllDiaryEntriesController.getAllEntries
+  '/', getAllUserDiaryEntriesController.getAllEntries
 );
 router.get(
   '/:id', getSingleDiaryEntryController.getSingleEntry

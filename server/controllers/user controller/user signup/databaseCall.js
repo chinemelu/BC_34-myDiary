@@ -18,7 +18,7 @@ const signupUserDatabaseCall = (res, req) => {
     [username, email, hashedPassword])
       .then((newUser) => {
         const payload = {
-          userId: newUser.id, // add userId to jwt token
+          userId: newUser.rows[0].id, // add userId to jwt token
         };
         const token = jwt.sign(payload, process.env.SECRET_KEY, { // encode jwt token
           expiresIn: '2h'
