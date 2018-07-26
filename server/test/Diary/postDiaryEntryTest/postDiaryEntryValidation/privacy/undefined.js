@@ -6,17 +6,15 @@ chai.should();
 chai.use(chaiHttp);
 
 describe('POST: /api/v1/entries', () => {
-  it("should have a default privacy value of 'private' when the privacy input field is empty", (done) => {
+  it("should have a default privacy value of 'private' when the privacy input field is undefined", (done) => {
     const registrationDetails = {
-      username: 'emptyPrivacy',
+      username: 'undefined',
       password: 'testPassword',
-      email: 'emptyPrivacy@test.com'
+      email: 'undefined@test.com'
     };
     const diaryEntry = {
       title: 'A boy has no name',
       description: 'Game of Thrones reference',
-      privacy: ''
-
     };
     chai.request(server)
       .post('/api/v1/auth/signup')

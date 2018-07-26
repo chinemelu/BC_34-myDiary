@@ -6,21 +6,23 @@ chai.should();
 chai.use(chaiHttp);
 
 describe('POST: /api/v1/entries', () => {
-  it('it should respond with an error message if description field has fewer than 4 characters', (done) => {
+  it('it should respond with an error message if title field is undefined', (done) => {
     const diaryEntry = {
-      title: 'A boy has no name',
-      description: 'Ant',
-      privacy: 'private'
+      description: 'update description 1',
+      privacy: 'public'
     };
     chai.request(server)
       .post('/api/v1/entries')
       .send(diaryEntry)
       .end((err, res) => {
         res.should.have.status(400);
+        res.should.be.json;
         res.body.should.be.a('object');
         res.body.should.have.property('errors');
         res.body.errors.should.be.a('object');
-        res.body.errors.description.should.eql('Description must have a minimum length of 4 characters');
+        res.body.errors.should.have.property('title');
+        res.body.errors.title.should.be.a('string');
+        res.body.errors.title.should.eql('Title field is required');
         done();
       });
   });
