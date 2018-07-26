@@ -1,9 +1,12 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+\c my_diary
+
 CREATE TABLE users (
   id uuid NOT NULL DEFAULT uuid_generate_v4(),
   username varchar(255) NOT NULL UNIQUE,
   email varchar(255) NOT NULL UNIQUE,
-  password varchar(255) NOT NULL,
+  password  VARCHAR(255) NOT NULL,
   img_url varchar(255),
   twitter varchar(255),
   facebook varchar(255),
