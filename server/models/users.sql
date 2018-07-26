@@ -1,4 +1,3 @@
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 \c my_diary
 
@@ -15,3 +14,7 @@ CREATE TABLE users (
   updated_at timestamp with time zone NOT NULL DEFAULT now(),
   PRIMARY KEY (id)
 );
+
+
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
