@@ -1,6 +1,8 @@
 
 \c my_diary
 
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 CREATE TABLE users (
   id uuid NOT NULL DEFAULT uuid_generate_v4(),
   username varchar(255) NOT NULL UNIQUE,
@@ -17,4 +19,3 @@ CREATE TABLE users (
 
 
 
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
