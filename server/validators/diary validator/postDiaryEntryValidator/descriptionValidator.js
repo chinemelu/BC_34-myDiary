@@ -1,23 +1,14 @@
 import validator from 'validator';
 import postDiaryEntryTitleValidator from './titleValidator';
+import inputFieldCheck from './inputFieldCheck';
 
 const postDiaryEntryDescriptionValidator = (data, isEditing, diaryEntry) => {
   // Sanitise the description field to prevent empty spaces counting as characters
+  // diary entry will be obtained from db using its Id before PUT route modification
+  // PUT and POST API routes share same validator
   const errors = postDiaryEntryTitleValidator(data, isEditing, diaryEntry);
-
-  // validate for undefined input value
-  if (isEditing === false && data.description === undefined) { // validate for undefined input value
-    data.description = '';
-    // if isEditing is false, then POST endpoint is on
-    // if isEditing is true, then PUT endpoint is on
-    // This is because both PUT and POST endpoints share the same validator
-  } else if (isEditing === false && data.description) {
-    data.description = data.description.trim();
-  } else if (isEditing === true && data.description === undefined) {
-    data.description = diaryEntry.description;
-  } else if (isEditing === true && data.description) {
-    data.description = data.description.trim();
-  }
+  // use input field check option to check for undefined values of POST and PUT routes
+  inputFieldCheck(data, isEditing, diaryEntry, 'description');
 
   // Validate the description field
   if (validator.isEmpty(data.description)) {

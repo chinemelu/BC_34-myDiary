@@ -1,19 +1,15 @@
 import validator from 'validator';
+import inputFieldCheck from './inputFieldCheck';
 
 const postDiaryEntryTitleValidator = (data, isEditing, diaryEntry) => {
   // Sanitise the title field to prevent empty spaces counting as characters
   const errors = {};
-  if (isEditing === false && data.title === undefined) { // validate for undefined input value
-    data.title = '';
-  } else if (isEditing === false && data.title) { // if isEditing is false, PUT end point is on
-    data.title = data.title.trim();
-    // if isEditing is false, POST end point is on
-  } else if (isEditing === true && data.title === undefined) {
-    data.title = diaryEntry.title;
-    // Both PUT and POST share the same validator
-  } else if (isEditing === true && data.title) {
-    data.title = data.title.trim();
-  }
+  // diary entry will be obtained from db using its Id before PUT route modification
+  // PUT and POST API routes share same validator
+
+  // use input field check option to check for undefined values of POST and PUT routes
+  inputFieldCheck(data, isEditing, diaryEntry, 'title');
+
   // Validate the title field
   if (validator.isEmpty(data.title)) {
     errors.title = 'Title field is required';

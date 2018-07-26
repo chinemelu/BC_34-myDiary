@@ -1,19 +1,16 @@
 import validator from 'validator';
 import postDiaryDescriptionValidator from './descriptionValidator';
+import inputFieldCheck from './inputFieldCheck';
 
 const postDiaryEntryPrivacyValidator = (data, isEditing, diaryEntry) => {
   // Sanitise the privacy field to prevent empty spaces counting as characters
+  // diary entry will be obtained from db using its Id before PUT route modification
+  // PUT and POST API routes share same validator
   const errors = postDiaryDescriptionValidator(data, isEditing, diaryEntry);
-  if (isEditing === false && data.privacy === undefined) { // validate for undefined input value
-    data.privacy = '';
-  } else if (isEditing === false && data.privacy) { // if isEditing is false, POST end point is on
-    data.privacy = data.privacy.trim();
-  } else if (isEditing === true && data.privacy) { // if isEditing is true, PUT end point is on
-    data.privacy = data.privacy.trim();
-    // Both PUT and POST share the same validator
-  } else if (isEditing === true && data.privacy === undefined) {
-    data.privacy = diaryEntry.privacy;
-  }
+
+  // use input field check option to check for undefined values of POST and PUT routes
+  inputFieldCheck(data, isEditing, diaryEntry, 'privacy');
+
   // Validate the privacy field
   if (!validator.isEmpty(data.privacy) && (!validator.equals(data.privacy, 'private', 'public')
       && !validator.equals(data.privacy, 'public'))) {

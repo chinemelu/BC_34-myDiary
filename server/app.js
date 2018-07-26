@@ -3,6 +3,7 @@ import bodyparser from 'body-parser';
 import logger from 'morgan';
 
 import diaryRoutes from './routes/diaryRoutes';
+import userRoutes from './routes/userRoutes';
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 
 app.use('/api/v1/entries', diaryRoutes);
+app.use('/api/v1/auth', userRoutes);
 
 app.use((req, res) => {
   res.status(404).json({
