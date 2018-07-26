@@ -9,6 +9,6 @@ CREATE TABLE entries (
   privacy VARCHAR(255) NOT NULL,
   created_at timestamp with time zone NOT NULL DEFAULT now(),
   updated_at timestamp with time zone NOT NULL DEFAULT now(),
-  PRIMARY KEY (id)
+  PRIMARY KEY (id),
   FOREIGN KEY(userid) REFERENCES users(id)
 );
