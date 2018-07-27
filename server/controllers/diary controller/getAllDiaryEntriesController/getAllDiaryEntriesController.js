@@ -1,4 +1,7 @@
-import dummyDatabase from '../../../data structures/dummyDatabase';
+import getAllMyEntriesDatabaseCall from './databaseCall';
+import authenticateToken from '../../../authentication/authenticateToken';
+import doesUserExist from '../../../authentication/doesUserExist';
+
 /**
  * @class diarycontroller
  */
@@ -10,20 +13,16 @@ class diarycontroller {
      * @returns  {Array} returns an array
      */
   static getAllEntries(req, res) {
-    // after authentication
-    // Check if diary entries table in database is empty
-    if (dummyDatabase.length > 0) {
-      res.status(200).json({
-        data: dummyDatabase
+    authenticateToken(req, res, (decodedToken) => {
+      doesUserExist(res, decodedToken.userId, (userId) => {
+        // send the results of the database call if there are no validation errors
+        getAllMyEntriesDatabaseCall(res, userId, (users) => {
+          res.status(200).json({
+            data: users
+          });
+        });
       });
-    } else {
-      // if empty, let user see a message indicating an empty diary entries list
-      /** REMEMBER TO WRITE TEST CHECKING IF DATABASE IS EMPTY
-      AND IF THE CORRESPONDING ERROR MESSAGE IS SENT */
-      res.status(200).json({
-        message: 'There are no available diary entries'
-      });
-    }
+    });
   }
 }
 export default diarycontroller;
