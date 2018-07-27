@@ -1,15 +1,15 @@
 import validator from 'validator';
 import signupEmailValidator from './emailValidator';
+import undefinedInputFieldCheck from './undefinedInput';
 
 const signupPasswordValidator = (req) => {
   const errors = signupEmailValidator(req);
   // trim password before storing it in database
 
-  if (req.body.password === undefined) { // check for undefined input values
-    req.body.password = '';
-  } else {
-    req.body.password = req.body.password.trim().toLowerCase();
-  }
+
+  // check for undefined input values
+  undefinedInputFieldCheck(req.body, 'password');
+
   const { password } = req.body;
 
   if (validator.isEmpty(password)) {
