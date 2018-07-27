@@ -1,5 +1,5 @@
 const authenticateUser = (userId, diaryEntry, res) => {
-  const fetchedDiaryEntry = { // create a new variable to exclude userId from response
+  const fetchedDiaryEntry = { // create a new object to exclude userId from response
     id: diaryEntry.id,
     title: diaryEntry.title,
     description: diaryEntry.description,
@@ -8,7 +8,7 @@ const authenticateUser = (userId, diaryEntry, res) => {
     updated_at: diaryEntry.updated_at,
   };
 
-  if (userId === diaryEntry.userid) {
+  if (userId === diaryEntry.userid) { // if user in diary Entry table is same as user making request
     res.status(200).json({
       data: fetchedDiaryEntry
     });
