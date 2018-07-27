@@ -1,15 +1,12 @@
 import validator from 'validator';
 import signupUsernameValidator from './usernameValidator';
+import undefinedInputFieldCheck from './undefinedInput';
 
 const signupEmailValidator = (req) => {
   const errors = signupUsernameValidator(req);
   // trim email and convert to lowercase before storing in database
 
-  if (req.body.email === undefined) {
-    req.body.email = '';
-  } else {
-    req.body.email = req.body.email.trim().toLowerCase();
-  }
+  undefinedInputFieldCheck(req.body, 'email');
   const { email } = req.body;
 
   if (validator.isEmpty(email)) {

@@ -4,18 +4,13 @@ import pool from '../../../models/db';
 import databaseResponse from './successDatabaseResponse';
 
 const loginUserDatabaseCall = (res, req) => {
-  const {
-    username,
-    email
-  } = req.body;
-
   const hashedPassword = bcrypt.hashSync(req.body.password, 10);
   // use function to hash password before saving into db
 
   pool.connect() // connect to database
     .then(client => client.query('SELECT * FROM users(username, email, password) VALUES ($1, $2, $3) RETURNING \n'
     + 'email',
-    [username, email, hashedPassword])
+    [req.body.username, req.body.email, hashedPassword])
       .then((newUser) => {
         const payload = {
           userId: newUser.rows[0].id, // add userId to jwt token
