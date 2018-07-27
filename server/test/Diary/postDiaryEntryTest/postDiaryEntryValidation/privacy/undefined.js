@@ -25,8 +25,8 @@ describe('POST: /api/v1/entries', () => {
         const { token } = res.body;
         chai.request(server)
           .post('/api/v1/entries')
-          .set('token', token)
           .send(diaryEntry)
+          .set('token', token)
           .end((err, res) => {
             res.should.have.status(201);
             res.should.be.json;
