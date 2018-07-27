@@ -5,7 +5,7 @@ const addDiaryEntryDatabaseCall = (req, res, data, userId) => {
   data.privacy = isPrivacyFieldEmpty(data); // if privacy field is empty, default value is private
   pool.connect() // connect to database
     .then(client => client.query('INSERT INTO entries(title, description, privacy, userid) VALUES ($1, $2, $3, $4) RETURNING \n'
-    + 'title, description, privacy',
+    + 'id, title, description, privacy',
     [req.body.title, req.body.description, req.body.privacy, userId])
       .then((result) => {
         res.status(201).json({

@@ -14,7 +14,8 @@ class diarycontroller {
    */
   static modifyEntry(req, res) {
     //  check to see if diary entry is in database
-    getSingleDiaryEntryDatabaseCall(req, res,
+    const { id } = req.params;
+    getSingleDiaryEntryDatabaseCall(req, res, id,
       (diaryEntry) => {
         // check if there are any validation errors
         // isEditing argument is made true because it's the PUT endpoint
