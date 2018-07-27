@@ -9,7 +9,7 @@ describe('POST: /api/v1/auth/signup', () => {
   it('should respond with a conflict error if the username already exists', (done) => {
     const registrationDetails = {
       username: 'usernameexists',
-      email: 'teejay2k4@yahoo.com',
+      email: 'usernameexists@yahoo.com',
       password: 'iAMAwesome'
     };
     const newRegistrationDetails = {
