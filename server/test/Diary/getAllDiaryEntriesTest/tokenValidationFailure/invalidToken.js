@@ -7,14 +7,14 @@ chai.use(chaiHttp);
 
 describe('GET: /api/v1/entries', () => {
   it('should throw an error if an invalid token is provided', (done) => {
-    const registrationDetails = {
+    const signupDetails3 = {
       username: 'invalidTokenGET',
       password: 'testPassword',
       email: 'invalidTokenProvidedGET@test.com'
     };
     chai.request(server)
       .post('/api/v1/auth/signup')
-      .send(registrationDetails)
+      .send(signupDetails3)
       .end((err, res) => {
         res.should.have.status(201);
         res.body.should.have.property('token');
