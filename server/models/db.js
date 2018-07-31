@@ -1,8 +1,9 @@
 import dotenv from 'dotenv';
+import { Pool } from 'pg';
 
 dotenv.config();
 
-const dbDetails = {
+const dbConfig = {
   user: process.env.DATABASE_USER,
   host: process.env.DATABASE_HOST,
   database: process.env.DATABASE_NAME,
@@ -10,4 +11,7 @@ const dbDetails = {
   port: process.env.DATABASE_PORT
 };
 
-export default dbDetails;
+const pool = new Pool(dbConfig);
+
+const db = (text, params, callback) => pool.query(text, params, callback);
+export default db;

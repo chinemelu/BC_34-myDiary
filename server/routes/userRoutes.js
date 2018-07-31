@@ -1,8 +1,7 @@
 import express from 'express';
-import userSignupController from '../controllers/user controller/user signup/signup';
-import userLoginController from '../controllers/user controller/user login/login';
-import signupValidator from '../validators/user validator/sign up validator/index';
-
+import userSignupController from '../controllers/userController/signup';
+import userLoginController from '../controllers/userController/login';
+import signupValidator from '../helpers/signupIndexValidator';
 
 const router = express.Router();
 
