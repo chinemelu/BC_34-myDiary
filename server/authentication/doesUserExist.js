@@ -1,6 +1,8 @@
-import pool from '../models/db';
+import { Pool } from 'pg';
+import dbDetails from '../models/db';
 
 const doesUserExist = (res, userId, callback) => {
+  const pool = new Pool(dbDetails);
   pool.connect()
     .then(client => client.query('SELECT * FROM users WHERE id = $1', [userId])
       .then((results) => {
