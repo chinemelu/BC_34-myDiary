@@ -23,7 +23,7 @@ class diarycontroller {
       authenticateToken(req, res, (decodedToken) => {
         doesUserExist(res, decodedToken.userId, (userId) => {
           // send the results of the database call if there are no validation errors
-          addDiaryEntryDatabaseCall(req, res, req.body, userId);
+          addDiaryEntryDatabaseCall(req, res, userId);
         });
       });
     } else {

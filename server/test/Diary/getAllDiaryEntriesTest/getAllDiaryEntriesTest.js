@@ -7,7 +7,7 @@ chai.use(chaiHttp);
 
 describe('GET: /api/v1/entries', () => {
   it('it should list all diary entries if database table has an entry', (done) => {
-    const registrationDetails = {
+    const signupDetails1 = {
       username: 'getAllEntries',
       password: 'testPassword',
       email: 'getAllEntries@test.com'
@@ -19,7 +19,7 @@ describe('GET: /api/v1/entries', () => {
     };
     chai.request(server)
       .post('/api/v1/auth/signup')
-      .send(registrationDetails)
+      .send(signupDetails1)
       .end((err, res) => {
         res.should.have.status(201);
         res.body.should.have.property('token');

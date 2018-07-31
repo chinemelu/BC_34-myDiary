@@ -1,11 +1,17 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../../../../app';
+import pool from '../../../../models/db';
 
 chai.should();
 chai.use(chaiHttp);
 
 describe('GET: /api/v1/entries', () => {
+  after((done) => {
+    pool.query('DELETE from entries', () => {
+      done();
+    });
+  });
   it("should throw an error if there's no token provided", (done) => {
     const registrationDetails = {
       username: 'NoTokenGET',

@@ -14,11 +14,11 @@ class diarycontroller {
      */
   static getAllEntries(req, res) {
     authenticateToken(req, res, (decodedToken) => {
-      doesUserExist(res, decodedToken.userId, (userId) => {
+      doesUserExist(res, decodedToken.userId, (verifiedExistingUserId) => {
         // send the results of the database call if there are no validation errors
-        getAllMyEntriesDatabaseCall(res, userId, (users) => {
+        getAllMyEntriesDatabaseCall(res, verifiedExistingUserId, (results) => {
           res.status(200).json({
-            data: users
+            data: results
           });
         });
       });

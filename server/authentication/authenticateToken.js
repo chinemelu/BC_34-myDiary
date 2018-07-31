@@ -8,12 +8,13 @@ const authenticateToken = (req, res, next) => {
     // if there's a token, JWT verifies if it's valid
     jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
       if (err) {
-        return res.status(401).json({
+        res.status(401).json({
           error: 'Invalid token',
         });
+      } else {
+        req.decoded = decoded;
+        next(req.decoded);
       }
-      req.decoded = decoded;
-      next(req.decoded);
       // if the token is valid, the process proceeds to the route
     });
   } else {

@@ -1,20 +1,26 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../../../app';
+// import pool from '../../../models/db';
 
 chai.should();
 chai.use(chaiHttp);
 
 describe('GET: /api/v1/entries', () => {
+  // before((done) => {
+  //   pool.query('DELETE from users', () => {
+  //     done();
+  //   });
+  // });
   it("should indicate if there's no diary entry for a particular user", (done) => {
-    const registrationDetails = {
-      username: 'emptyDatabase',
+    const signupDetails = {
+      username: 'emptyDatabase2',
       password: 'testPassword',
-      email: 'emptyDatabase@test.com'
+      email: 'emptyDatabase2@test.com'
     };
     chai.request(server)
       .post('/api/v1/auth/signup')
-      .send(registrationDetails)
+      .send(signupDetails)
       .end((err, res) => {
         res.should.have.status(201);
         res.body.should.have.property('token');

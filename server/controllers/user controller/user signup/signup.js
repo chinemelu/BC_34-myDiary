@@ -1,5 +1,6 @@
+import { Pool } from 'pg';
 import signupUserDatabaseCall from './databaseCall';
-import pool from '../../../models/db';
+import dbDetails from '../../../models/db';
 /**
  * @class userController
  */
@@ -17,9 +18,11 @@ class userController {
       username
     } = req.body;
     const errors = {};
-    pool.query('SELECT * FROM users WHERE email =$1 OR username = $2 LIMIT 1', [email, username], (err, user) => {
-      if (err) {
-        throw err;
+
+    const pool = new Pool(dbDetails);
+    pool.query('SELECT * FROM users WHERE email =$1 OR username = $2 LIMIT 1', [email, username], (error, user) => {
+      if (error) {
+        return res.status(500).json({ error });
       }
       // if there are no existing users with the email or password, call signup function
       if (!user.rows.length) {

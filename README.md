@@ -41,7 +41,10 @@ key: Content-Type value: `application/x-www-form-urlencoded`
 * [Express](https://expressjs.com/) - Fast, unopinionated, minimalist web framework for Node.js.
 * [Body-Parser](https://www.npmjs.com/package/body-parser) - Node.js body parsing middleware.
 * [validator](https://www.npmjs.com/package/validator) - An express.js middleware for node-validator.
-
+* [pg](https://www.npmjs.com/package/pg) - Non-blocking PostgreSQL client for node.js. Pure JavaScript and optional native libpq bindings.
+* [jsonwebToken](https://jwt.io/) - JSON Web Tokens are an open, industry standard RFC 7519 method for representing claims securely between two parties.
+* [Bcrypt](https://www.npmjs.com/package/bcrypt) - A password hashing function
+* [dotenv](https://www.npmjs.com/package/dotenv) - dotenv is a zero-dependency module that loads environment variables from a .env file into process.env.
 
 ## Author
 Chinemelu Nwosu
