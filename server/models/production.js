@@ -28,7 +28,7 @@ const generateEntryTable = `CREATE TABLE entries (
 
 const generatedQuery = `${generateUserTable} ${generateEntryTable}`;
 
-db.query(generatedQuery, (err, res) => {
+db(generatedQuery, (err, res) => {
   if (err) {
     throw err;
   } else {
