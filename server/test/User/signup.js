@@ -7,7 +7,7 @@ chai.should();
 chai.use(chaiHttp);
 
 describe('POST: /api/v1/auth/signup API route', () => {
-  before((done) => {
+  beforeEach((done) => {
     db('DELETE FROM users', () => {
       done();
     });

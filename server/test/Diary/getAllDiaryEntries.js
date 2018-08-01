@@ -8,7 +8,7 @@ chai.use(chaiHttp);
 
 describe('GET: /api/v1/entries', () => {
   describe('Authentication errors', () => {
-    before((done) => {
+    beforeEach((done) => {
       db('DELETE from entries', () => {
         done();
       });

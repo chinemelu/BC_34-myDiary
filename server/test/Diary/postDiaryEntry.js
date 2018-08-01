@@ -7,12 +7,12 @@ chai.should();
 chai.use(chaiHttp);
 
 describe('POST: /api/v1/entries API route', () => {
-  before((done) => {
+  beforeEach((done) => {
     db('DELETE FROM users', () => {
       done();
     });
   });
-  before((done) => {
+  beforeEach((done) => {
     db('DELETE FROM entries', () => {
       done();
     });
