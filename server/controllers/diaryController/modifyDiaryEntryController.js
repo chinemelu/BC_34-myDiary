@@ -1,10 +1,10 @@
 import postDiaryEntryValidator from '../../helpers/diaryIndexValidator';
 import getSingleDiaryEntryDatabaseCall from './getSingleEntryQuery';
-import modifyDiaryEntryDatabaseCall from './modifyDiaryQuery';
+import isPrivacyEmpty from '../../middlewares/isPrivacyEmpty';
+import db from '../../models/db';
 import authenticateToken from '../../middlewares/authenticateToken';
 import doesUserExist from '../../middlewares/doesUserExist';
 import authenticateUser from '../../middlewares/authenticateUser';
-import hasUpdatablePeriodElapsed from '../../middlewares/canUpdate';
 
 /**
  * @class diarycontroller
@@ -24,20 +24,43 @@ class diarycontroller {
           (diaryEntry) => {
             const { errors, isValid } = postDiaryEntryValidator(req.body, true, diaryEntry);
             authenticateUser(verifiedExistingUserId, diaryEntry, res, () => {
-              hasUpdatablePeriodElapsed(res, diaryEntry, () => {
-                if (isValid) {
-                  modifyDiaryEntryDatabaseCall(req, res);
-                } else {
-                  res.status(400).json({
-                    errors
+              // reference - https://stackoverflow.com/questions/11072467/javascript-relative-time-24-hours-ago-etc-as-time
+
+              const datePeriod = new Date().getTime() - new Date(diaryEntry.created_at).getTime();
+
+              if (datePeriod > 60000) {
+                res.status(403).json({
+                  message: 'You can no longer update this diary entry'
+                });
+              } else if (isValid) {
+                const { id } = req.params;
+                const {
+                  title,
+                  description,
+                } = req.body;
+                let { privacy } = req.body;
+                privacy = isPrivacyEmpty(req.body);
+                const text = 'UPDATE entries SET title=$1, description=$2, privacy=$3 WHERE id = $4  RETURNING\n'
+                + 'id, title, description, privacy';
+                const params = [title, description, privacy, id];
+                db(text, params, (err, result) => {
+                  if (err) {
+                    return res.status(500).json({ error: err.stack });
+                  }
+                  res.status(200).json({
+                    message: 'You have successfully updated the diary entry',
+                    updated: result.rows[0]
                   });
-                }
-              });
+                });
+              } else {
+                res.status(400).json({
+                  errors
+                });
+              }
             });
           });
       });
     });
-  // });
   }
 }
 export default diarycontroller;

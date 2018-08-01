@@ -1,6 +1,6 @@
-import getAllMyEntriesDatabaseCall from './getAllDiaryEntriesQuery';
 import authenticateToken from '../../middlewares/authenticateToken';
 import doesUserExist from '../../middlewares/doesUserExist';
+import db from '../../models/db';
 
 /**
  * @class diarycontroller
@@ -15,11 +15,21 @@ class diarycontroller {
   static getAllEntries(req, res) {
     authenticateToken(req, res, (decodedToken) => {
       doesUserExist(res, decodedToken.userId, (verifiedExistingUserId) => {
-        // send the results of the database call if there are no validation errors
-        getAllMyEntriesDatabaseCall(res, verifiedExistingUserId, (results) => {
-          res.status(200).json({
-            data: results
-          });
+        const text = 'SELECT id, title, description, privacy, created_at, updated_at FROM entries WHERE userid = $1';
+        const params = [verifiedExistingUserId];
+        db(text, params, (err, results) => {
+          if (err) {
+            return res.status(500).json({ error: err.stack });
+          }
+          if (Array.isArray(results.rows) && results.rows.length) {
+            res.status(200).json({
+              data: results.rows
+            });
+          } else {
+            res.status(200).json({
+              message: 'There are no available diary entries'
+            });
+          }
         });
       });
     });

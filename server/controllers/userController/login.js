@@ -1,7 +1,7 @@
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import loginValidator from '../../helpers/loginValidator';
-import getUserByEmail from './getUserByEmail';
-import verifyUserPassword from './verifyUserPassword';
-import loginResponse from './loginResponse';
+import db from '../../models/db';
 
 /**
  * @class userController
@@ -16,17 +16,36 @@ class userController {
   static login(req, res) {
     const { errors, isValid } = loginValidator(req.body);
     if (isValid) {
-      getUserByEmail(req.body.email, res, (user) => {
-        if (!user) {
+      const text = 'SELECT * FROM users WHERE email = $1';
+      const params = [req.body.email];
+      db(text, params, (err, user) => {
+        if (err) {
+          return res.status(500).json({ error: err.stack });
+        }
+        if (!user.rows.length) {
           res.status(401).json({ error: 'email or password is incorrect' });
         } else {
-          verifyUserPassword(req.body.password, user.password, (isMatch) => {
-            if (isMatch) {
-              loginResponse(res, user);
-            } else {
-              res.status(401).json({ error: 'email or password is incorrect' });
-            }
-          });
+          bcrypt.compare(req.body.password, user.rows[0].password)
+            .then((isMatch) => {
+              if (isMatch) {
+                const payload = {
+                  userId: user.rows[0].id,
+                };
+                const token = jwt.sign(payload, process.env.SECRET_KEY, {
+                  expiresIn: '2h'
+                });
+                res.status(200).json({
+                  message: `${user.rows[0].username}, you have successfully logged in`,
+                  email: user.rows[0].email,
+                  token
+                });
+              } else {
+                return res.status(401).json({ error: 'email or password is incorrect' });
+              }
+            })
+            .catch((error) => {
+              throw error;
+            });
         }
       });
     } else {

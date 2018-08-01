@@ -6,7 +6,7 @@ import db from '../../models/db';
 chai.should();
 chai.use(chaiHttp);
 
-describe('GET: /api/v1/entries', () => {
+describe('GET: /api/v1/entries API route', () => {
   describe('Authentication errors', () => {
     beforeEach((done) => {
       db('DELETE from entries', () => {

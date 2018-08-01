@@ -8,7 +8,7 @@ const doesUserExist = (res, userId, callback) => {
     if (results.rows.length) {
       callback(results.rows[0].id);
     } else {
-      res.status(401).json({
+      res.status(404).json({
         message: 'User does not exist'
       });
     }
