@@ -1,0 +1,334 @@
+swagger: "2.0"
+
+info:
+  version: 1.0.0
+  title: My Diary App API
+  description: A simple API to interact with the My Diary application 
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+schemes:
+  - http
+host: localhost:3000
+basePath: /api/v1
+
+consumes:
+- application/json
+produces:
+- application/json
+
+paths:
+  "/auth/signup":
+    post:
+      summary: Register a user
+      description: Allows a user to signup and obtain token for authentication
+      responses:
+        201:
+          description: Created
+          schema: 
+            type: object
+            items:
+              required:
+                - token
+              properties:
+                message:
+                  type: string
+                username: 
+                  type: string
+                email:
+                  type: string
+                token:
+                  type: string
+        400: 
+          description: Bad request.
+          schema:
+            type: object
+            items:
+              properties:
+                errors:
+                  type: object
+        
+        409:
+          description: Conflict. Username exists, or email exists
+          schema:
+            type: object
+            items:
+              properties:
+                errors:
+                  type: object
+                  
+                  
+  "/auth/login":
+    post:
+      summary: Login a user
+      description: Allows a user to login and obtain token for authentication
+      responses:
+        200:
+          description: OK
+          schema: 
+            type: object
+            items:
+              required:
+                - token
+              properties:
+                message:
+                  type: string
+                email:
+                  type: string
+                token:
+                  type: string
+        400: 
+          description: Bad request. Email field is required, or password field is required
+          schema:
+            type: object
+            items:
+              properties:
+                errors:
+                  type: object
+        
+        401:
+          description: Unauthorized. Email and/or password is incorrect
+          schema:
+            type: object
+            items:
+              properties:
+                errors:
+                  type: object
+            
+  "/entries":
+    get:
+      summary: Fetch all the entries for a user.
+      description: The user can view all of his/her available diary entries.
+      responses:
+        200: 
+          description: OK
+          schema:
+            type: object
+            items: 
+              properties:
+                id:
+                  type: string
+                title:
+                  type: string
+                description:
+                  type: string
+                privacy:
+                  type: string
+                created_at:
+                  type: string
+                updated_at:
+                  type: string
+        
+        401: 
+          description: Unauthorized. Invalid token, or User does not exist.
+          schema:
+            type: object
+            items:
+              properties:
+                error: 
+                  type: string
+                  
+                  
+        403: 
+          description: Forbidden. No token provided
+          schema:
+            type: object
+            items:
+              properties:
+                success: 
+                  type: string
+                message:
+                  type: string
+                  
+                  
+    post: 
+      summary: Add a diary entry
+      description:  Allows a user to add an entry
+      responses:
+          201: 
+            description: Created
+            schema:
+              type: object
+              items: 
+                properties:
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    
+          400: 
+            description: Bad request.
+            schema:
+              type: object
+              items:
+                properties:
+                  errors:
+                    type: object
+        
+          
+          401: 
+            description: Unauthorized. Invalid token
+            schema:
+              type: object
+              items:
+                properties:
+                  error: 
+                    type: string
+                    
+                    
+          403: 
+            description: Forbidden. No token provided
+            schema:
+              type: object
+              items:
+                properties:
+                  success: 
+                    type: string
+                  message:
+                    type: string
+                    
+          404:
+            description: Not Found. User does not exist
+            schema:
+              type: object
+              items:
+                properties:
+                  message:
+                    type: string
+                    
+  
+        
+        
+  "/entries/{entryId}":
+    parameters:
+      - name: entryId
+        in: path
+        required: true
+        description: The diary entry's id
+        type: string
+    get:
+      summary: Gets a diary entry
+      description: Fetch the details of an entry for a user
+      
+      responses:
+        200: 
+          description: OK
+          schema:
+            type: object
+            items: 
+              properties:
+                id:
+                  type: string
+                title:
+                  type: string
+                description:
+                  type: string
+                privacy:
+                  type: string
+                created_at:
+                  type: string
+                updated_at:
+                  type: string
+                userId:
+                  type: string
+                  
+        400: 
+          description: Bad request. Invalid Id.
+          schema:
+            type: object
+            items:
+              properties:
+                errors:
+                  type: object
+      
+        
+        401: 
+          description: Unauthorized. Invalid token
+          schema:
+            type: object
+            items:
+              properties:
+                error: 
+                  type: string
+                  
+                  
+        403: 
+          description: Forbidden. No token provided
+          schema:
+            type: object
+            items:
+              properties:
+                success: 
+                  type: string
+                message:
+                  type: string
+                  
+        404:
+          description: Not Found. User does not exist, or diary entry not found
+          schema:
+            type: object
+            items:
+              properties:
+                message:
+                  type: string
+          
+  
+    put: 
+      summary: Modify a diary entry
+      description:  Allows a user to modify a diary entry
+      responses:
+          200: 
+            description: OK
+            schema:
+              type: object
+              items: 
+                properties:
+                  message:
+                    type: string
+                  updated:
+                    type: object
+                    
+          400: 
+            description: Bad request. Invalid Id
+            schema:
+              type: object
+              items:
+                properties:
+                  errors:
+                    type: object
+        
+          
+          401: 
+            description: Unauthorized. Invalid token
+            schema:
+              type: object
+              items:
+                properties:
+                  error: 
+                    type: string
+                    
+                    
+          403: 
+            description: Forbidden. No token provided, or diary can no longer be updated
+            schema:
+              type: object
+              items:
+                properties:
+                  success: 
+                    type: string
+                  message:
+                    type: string
+                    
+          404:
+            description: Not Found. User does not exist
+            schema:
+              type: object
+              items:
+                properties:
+                  message:
+                    type: string
+                      
+
+
+

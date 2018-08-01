@@ -22,7 +22,7 @@ MyDiary is an online journal where users can pen down their thoughts and feeling
   ```
   .........
   ----------------------------------------------------------------------
-    29 passing
+    60 passing
   ```
 
 ## Deployment

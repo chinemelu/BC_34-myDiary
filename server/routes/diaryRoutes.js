@@ -1,9 +1,8 @@
 import express from 'express';
-import addDiaryEntryController from '../controllers/diary controller/addDiaryEntryController/addDiaryEntryController';
-import getAllUserDiaryEntriesController from '../controllers/diary controller/getAllDiaryEntriesController/getAllDiaryEntriesController';
-import getSingleDiaryEntryController from '../controllers/diary controller/getSingleDiaryEntryController/getSingleDiaryEntryController';
-import modifyDiaryEntryController from '../controllers/diary controller/modifyDiaryEntryController/modifyDiaryEntryController';
-import deleteDiaryEntryController from '../controllers/diary controller/deleteDiaryEntryController/deleteDiaryEntryController';
+import addDiaryEntryController from '../controllers/diaryController/AddDiary';
+import getAllUserDiaryEntriesController from '../controllers/diaryController/GetAllDiaryEntries';
+import getSingleDiaryEntryController from '../controllers/diaryController/GetSingleDiary';
+import modifyDiaryEntryController from '../controllers/diaryController/ModifyDiary';
 
 const router = express.Router();
 
@@ -19,7 +18,5 @@ router.get(
 router.put(
   '/:id', modifyDiaryEntryController.modifyEntry
 );
-router.delete(
-  '/:id', deleteDiaryEntryController.deleteEntry
-);
+
 export default router;
