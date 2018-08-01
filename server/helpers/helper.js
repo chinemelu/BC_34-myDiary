@@ -20,16 +20,6 @@ export const inputFieldCheck = (data, isEditing, diaryEntry, inputField) => {
   }
 };
 
-
-const undefinedInput = (data, field) => {
-  if (data[field] === undefined) {
-    data[field] = '';
-    return data[field];
-  }
-  data[field] = data[field].trim().toLowerCase();
-};
-
-
 export const undefinedInputFieldCheck = (data, inputField) => {
   if (data[inputField] === undefined) {
     data[inputField] = '';
@@ -179,8 +169,8 @@ export const postDiaryEntryValidator = (data, isEditing, diaryEntry) => {
 export const loginValidator = (data) => {
   const errors = {};
 
-  undefinedInput(data, 'email');
-  undefinedInput(data, 'password');
+  undefinedInputFieldCheck(data, 'email');
+  undefinedInputFieldCheck(data, 'password');
 
   if (validator.isEmpty(data.email)) {
     errors.email = 'Email field is required';
