@@ -12,6 +12,11 @@ describe('POST: /api/v1/auth/signup API route', () => {
       done();
     });
   });
+  afterEach((done) => {
+    db('DELETE FROM users', () => {
+      done();
+    });
+  });
   describe('Conflict errors', () => {
     it('should respond with a conflict error if the username already exists', (done) => {
       const registrationDetails = {

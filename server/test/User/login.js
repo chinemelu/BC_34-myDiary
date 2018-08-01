@@ -14,6 +14,11 @@ describe('POST: /api/v1/auth/login API route', () => {
       done();
     });
   });
+  afterEach((done) => {
+    pool.query('DELETE FROM users', () => {
+      done();
+    });
+  });
   describe('Validation errors', () => {
     it('should respond with an error if the email field is undefined', (done) => {
       const loginDetails = {
