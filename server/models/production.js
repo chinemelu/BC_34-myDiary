@@ -1,6 +1,6 @@
 import db from './db';
 
-const generateUUIDExtension = 'CREATE EXTENSION IF NOT EXISTS "uuid-ossp"';
+const generateUUIDExtension = "CREATE EXTENSION IF NOT EXISTS 'uuid-ossp'";
 
 const generateUserTable = `CREATE TABLE users (
   id uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -28,7 +28,7 @@ const generateEntryTable = `CREATE TABLE entries (
   FOREIGN KEY(userid) REFERENCES users(id)
 );`;
 
-const generatedQuery = `${generateUUIDExtension} ${generateUserTable}  ${generateUUIDExtension} ${generateEntryTable}`;
+const generatedQuery = `${generateUUIDExtension}, ${generateUserTable},  ${generateUUIDExtension}, ${generateEntryTable}`;
 
 db(generatedQuery, (err, res) => {
   if (err) {
