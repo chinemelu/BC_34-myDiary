@@ -1,21 +1,19 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import { Pool } from 'pg';
-import dbDetails from '../../models/db';
+import db from '../../models/db';
 import server from '../../app';
 
 chai.should();
 chai.use(chaiHttp);
-const pool = new Pool(dbDetails);
 
 describe('POST: /api/v1/auth/login API route', () => {
   beforeEach((done) => {
-    pool.query('DELETE FROM users', () => {
+    db('DELETE FROM users', () => {
       done();
     });
   });
   afterEach((done) => {
-    pool.query('DELETE FROM users', () => {
+    db('DELETE FROM users', () => {
       done();
     });
   });

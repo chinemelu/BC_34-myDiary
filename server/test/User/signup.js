@@ -53,12 +53,12 @@ describe('POST: /api/v1/auth/signup API route', () => {
     it('should respond with a conflict error if the email already exists', (done) => {
       const registrationDetails2 = {
         username: 'tony',
-        email: 'teejay2k4@yahoo.com',
+        email: 'alreadyexistingemail@yahoo.com',
         password: 'iAMAwesome'
       };
       const newRegistrationDetails2 = {
         username: 'username',
-        email: 'teejay2k4@yahoo.com',
+        email: 'alreadyexistingemail@yahoo.com',
         password: 'iAMAwesome'
       };
       chai.request(server)
