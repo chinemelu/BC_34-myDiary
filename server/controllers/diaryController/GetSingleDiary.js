@@ -1,4 +1,4 @@
-import GetSingleDiaryEntryQuery from './GetSingleEntryQuery';
+import GetSingleDiaryEntryQuery from './getSingleEntryQuery';
 import authenticateUser from '../../middlewares/authenticateUser';
 import authenticateToken from '../../middlewares/authenticateToken';
 import doesUserExist from '../../middlewares/doesUserExist';
