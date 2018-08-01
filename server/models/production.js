@@ -28,7 +28,7 @@ const generateEntryTable = `CREATE TABLE entries (
   FOREIGN KEY(userid) REFERENCES users(id)
 );`;
 
-const generatedQuery = `${generateUUIDExtension}, ${generateUserTable},  ${generateUUIDExtension}, ${generateEntryTable}`;
+const generatedQuery = `${generateUUIDExtension} ${generateUserTable}  ${generateUUIDExtension} ${generateEntryTable}`;
 
 db(generatedQuery, (err, res) => {
   if (err) {
