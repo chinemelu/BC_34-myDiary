@@ -4,7 +4,7 @@ import db from '../../models/db';
 /**
  * @class userController
  */
-class userController {
+class UserController {
   /**
    * @description user sign up
    * @param {*} req Http request
@@ -59,4 +59,4 @@ class userController {
   }
 }
 
-export default userController;
+export default UserController;

@@ -1,4 +1,4 @@
-import postDiaryEntryValidator from '../../helpers/diaryIndexValidator';
+import { postDiaryEntryValidator } from '../../helpers/helper';
 import authenticateToken from '../../middlewares/authenticateToken';
 import doesUserExist from '../../middlewares/doesUserExist';
 import isPrivacyFieldEmpty from '../../middlewares/isPrivacyEmpty';
@@ -6,7 +6,7 @@ import db from '../../models/db';
 /**
  * @class diarycontroller
  */
-class diarycontroller {
+class DiaryController {
 /**
    * @description add diary entry
    * @param {*} req http request
@@ -40,4 +40,4 @@ class diarycontroller {
     }
   }
 }
-export default diarycontroller;
+export default DiaryController;

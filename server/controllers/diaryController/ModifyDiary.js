@@ -1,5 +1,5 @@
-import postDiaryEntryValidator from '../../helpers/diaryIndexValidator';
-import getSingleDiaryEntryDatabaseCall from './getSingleEntryQuery';
+import { postDiaryEntryValidator } from '../../helpers/helper';
+import getSingleDiaryEntryDatabaseCall from './GetSingleEntryQuery';
 import isPrivacyEmpty from '../../middlewares/isPrivacyEmpty';
 import db from '../../models/db';
 import authenticateToken from '../../middlewares/authenticateToken';

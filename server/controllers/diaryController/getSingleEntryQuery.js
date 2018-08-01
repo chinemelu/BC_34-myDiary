@@ -1,8 +1,8 @@
-import validIdValidator from '../../helpers/validIdValidator';
+import { validIdValidator } from '../../helpers/helper';
 import db from '../../models/db';
 
 
-const getSingleDiaryEntryQuery = (req, res, callback) => {
+const GetSingleDiaryEntryQuery = (req, res, callback) => {
   const { id } = req.params;
 
   const { errors, isValid } = validIdValidator(req.params);
@@ -25,4 +25,4 @@ const getSingleDiaryEntryQuery = (req, res, callback) => {
     });
   }
 };
-export default getSingleDiaryEntryQuery;
+export default GetSingleDiaryEntryQuery;

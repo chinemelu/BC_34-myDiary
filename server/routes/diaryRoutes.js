@@ -1,8 +1,8 @@
 import express from 'express';
-import addDiaryEntryController from '../controllers/diaryController/addDiaryEntryController';
-import getAllUserDiaryEntriesController from '../controllers/diaryController/getAllDiaryEntriesController';
-import getSingleDiaryEntryController from '../controllers/diaryController/getSingleDiaryEntryController';
-import modifyDiaryEntryController from '../controllers/diaryController/modifyDiaryEntryController';
+import addDiaryEntryController from '../controllers/diaryController/AddDiary';
+import getAllUserDiaryEntriesController from '../controllers/diaryController/GetAllDiaryEntries';
+import getSingleDiaryEntryController from '../controllers/diaryController/GetSingleDiary';
+import modifyDiaryEntryController from '../controllers/diaryController/ModifyDiary';
 
 const router = express.Router();
 

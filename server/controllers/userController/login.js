@@ -1,12 +1,12 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import loginValidator from '../../helpers/loginValidator';
+import { loginValidator } from '../../helpers/helper';
 import db from '../../models/db';
 
 /**
  * @class userController
  */
-class userController {
+class UserController {
   /**
    * @description user sign in
    * @param {*} req http request
@@ -44,7 +44,9 @@ class userController {
               }
             })
             .catch((error) => {
-              throw error;
+              res.status(500).json({
+                error
+              });
             });
         }
       });
@@ -54,4 +56,4 @@ class userController {
   }
 }
 
-export default userController;
+export default UserController;

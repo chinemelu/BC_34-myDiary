@@ -1,4 +1,4 @@
-import getSingleDiaryEntryDatabaseCall from './getSingleEntryQuery';
+import GetSingleDiaryEntryQuery from './GetSingleEntryQuery';
 import authenticateUser from '../../middlewares/authenticateUser';
 import authenticateToken from '../../middlewares/authenticateToken';
 import doesUserExist from '../../middlewares/doesUserExist';
@@ -6,7 +6,7 @@ import doesUserExist from '../../middlewares/doesUserExist';
 /**
  * @class diarycontroller
  */
-class diarycontroller {
+class DiaryController {
   /**
      * @description get single diary entry
      * @param {*} req http request
@@ -17,7 +17,7 @@ class diarycontroller {
     authenticateToken(req, res, (decodedToken) => {
       const { userId } = decodedToken;
       doesUserExist(res, userId, (verifiedExistingUserId) => {
-        getSingleDiaryEntryDatabaseCall(req, res, (diaryEntry) => {
+        GetSingleDiaryEntryQuery(req, res, (diaryEntry) => {
           authenticateUser(verifiedExistingUserId, diaryEntry, res, () => {
             res.status(200).send({
               data: diaryEntry
@@ -29,4 +29,4 @@ class diarycontroller {
   }
 }
 
-export default diarycontroller;
+export default DiaryController;

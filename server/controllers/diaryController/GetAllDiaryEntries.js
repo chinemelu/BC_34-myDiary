@@ -5,7 +5,7 @@ import db from '../../models/db';
 /**
  * @class diarycontroller
  */
-class diarycontroller {
+class DiaryController {
   /**
      * @description get all diary entries
      * @param {*} req http request
@@ -35,4 +35,4 @@ class diarycontroller {
     });
   }
 }
-export default diarycontroller;
+export default DiaryController;
