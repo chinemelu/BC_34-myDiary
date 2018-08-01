@@ -11,7 +11,7 @@
     "coveralls": "nyc npm test&& nyc report --reporter=text-lcov | coveralls",
     "heroku-postbuild": "npm run build-server",
     "build-server": " node ./node_modules/babel-cli/bin/babel.js -d ./build ./server",
-    "start": "node ./build/server/models/production.js",
+    "start": "node ./build/models/production.js",
     "test-dev": "mocha --require babel-core/register server/test/**/*.js  --exit || exit 0",
     "createDb": "psql -U postgres -f ./server/models/data.sql"
   },
