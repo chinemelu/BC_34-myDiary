@@ -9,8 +9,8 @@ import doesUserExist from '../../middlewares/doesUserExist';
 class DiaryController {
   /**
      * @description get single diary entry
-     * @param {*} req http request
-     * @param {*} res http response
+     * @param {string} req http request
+     * @param {string} res http response
      * @returns {JSON} returns a JSON object
      */
   static getSingleEntry(req, res) {
