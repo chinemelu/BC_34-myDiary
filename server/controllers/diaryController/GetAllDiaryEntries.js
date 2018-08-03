@@ -27,7 +27,8 @@ class DiaryController {
             });
           } else {
             res.status(200).json({
-              message: 'There are no available diary entries'
+              message: 'There are no available diary entries',
+              data: results.rows
             });
           }
         });

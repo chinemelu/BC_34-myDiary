@@ -2,14 +2,14 @@
 <html>
 	<head>
 		<link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="./style.css">
-		<link rel="stylesheet" href="../font-awesome/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="css/landingPage.css">
+		<link rel="stylesheet" href="font-awesome/font-awesome-4.7.0/css/font-awesome.min.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Signup/Signin</title>
 	</head>
 	<body>
 		<header>
-			<h1><img src="../logo/logo.jpg"class="logo" alt="Logo"></h1>
+			<h1><img src="images/logo.jpg"class="logo" alt="Logo"></h1>
 			<input type="checkbox" id="nav-toggle" class="nav-toggle"> 
 			<nav class="main-nav">
 				<ul>
@@ -73,17 +73,19 @@
 					<li><a href="#">Sign up</a></li>
 				</ul>
 				<div id="cd-login"> <!-- form for login --> 
-					<form class="cd-form" action="../List of diary entries + write diary entry/index.html">
+				<!-- autocomplete="off" reference https://stackoverflow.com/questions/2699284/make-page-to-tell-browser-not-to-cache-preserve-input-values -->
+					<form class="cd-form" autocomplete="off">
+						<span class="cd-error-message" id="form-error">Error message here!</span>
 						<p class="fieldset">
 							<label class="image-replace cd-email" for="signin-email">Email</label>
-							<input class="full-width has-padding has-border" type="email" placeholder="Email">
-							<span class="cd-error-message">Error message here!</span>
+							<input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="Email" value='';>
+							<span class="cd-error-message" id="signin-email-error">Error message here!</span>
 						</p>
 						<p class="fieldset">
 							<label class="cd-username image-replace" for="signin-password">Password</label>
-							<input class="full-width has-padding has-border password" type="password" placeholder="Password">
+							<input class="full-width has-padding has-border password" id="signin-password" type="password" placeholder="Password" value=''>
 							<a href="#" class="show-password" id="show-login-password">Show</a>
-							<span class="cd-error-message">Error message here!</span>
+							<span class="cd-error-message" id="signin-password-error">Error message here!</span>
 						</p>
 							<p class="fieldset">
 							<input type="checkbox" id="remember-me" checked>
@@ -91,7 +93,7 @@
 						</p>
 
 						<p class="fieldset">
-							<input class="full-width" type="submit" value="Login">
+							<input class="full-width" type="submit" id="signin-button" value="Login">
 						</p>
 					</form>
 		
@@ -103,26 +105,27 @@
 				<!-- Start of signup form -->
 				
 				<div id="cd-signup">
-					<form class="cd-form" action="../List of diary entries + write diary entry/index.html">
+					<!-- autocomplete="off" reference https://stackoverflow.com/questions/2699284/make-page-to-tell-browser-not-to-cache-preserve-input-values -->
+					<form class="cd-form" autocomplete="off">
 						<p class="fieldset">
 							<label class="cd-username image-replace" for="signup-username">Username</label>
-							<input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
-							<span class="cd-error-message">Error message here!</span>
+							<input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username" value=''>
+							<span class="cd-error-message" id="signup-username-error">Error message here!</span>
 						</p>
 						<p class="fieldset">
 							<label class="cd-email image-replace" for="signup-email">Email</label>
-							<input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="Email">
-							<span class="cd-error-message">Error message here!</span>
+							<input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="Email" value=''>
+							<span class="cd-error-message" id="signup-email-error">Error message here!</span>
 						</p>
 						<p class="fieldset">
 							<label class="cd-password image-replace" for="signup-password">Password</label>
 							<input class="full-width has-padding has-border password" id="signup-password" type="password" placeholder="Password">
 							<a href="#"  class="show-password" id="show-signup-password">Show</a>
-							<span class="cd-error-message">Error message here!</span>
+							<span class="cd-error-message" id="signup-password-error">Error message here!</span>
 						</p>
 						
 						<p class="fieldset">
-							<input class="full-width has-padding" type="submit" value="Create account">
+							<input class="full-width has-padding" id="signup-button" type="submit" value="Create account">
 						</p>
 					</form>
 				</div>
@@ -156,7 +159,9 @@
 			<footer>
 				<p>Collections &copy; 2018</p>
 			</footer>
-		<script src="./landing-page-script.js"></script>
+		<script src="js/landingPage.js"></script>
+		<script type="text/javascript" src="js/signup.js"></script>
+		<script type="text/javascript" src="js/signin.js"></script>
 	</body>
 </html>
 
