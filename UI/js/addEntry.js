@@ -14,12 +14,12 @@ const postDiaryEntry = (e) => {
     description: description.value,
   };
 
-const token = localStorage.getItem('token');
-const myHeaders = new Headers({
+  const token = localStorage.getItem('token');
+  const myHeaders = new Headers({
     'Access-Control-Allow-Origin': '*',
     'Content-Type': 'application/json',
     token
-});
+  });
 
   const fetchParameters = {
     method: 'POST',
@@ -28,14 +28,12 @@ const myHeaders = new Headers({
     headers: myHeaders
   };
 
- 
   fetch(postDiaryEntryUrl, fetchParameters)
     .then((res) => {
       return res.json();
     })
     .then((entry) => {
       if (entry.errors) {
-        console.log("entry.errors", entry.errors)
         if (entry.errors.title) {
           titleErrorMessage.innerHTML = entry.errors.title;
         } else {
@@ -44,7 +42,7 @@ const myHeaders = new Headers({
         if (entry.errors.description) {
           descriptionErrorMessage.innerHTML = entry.errors.description;
         } else {
-          titleErrorMessage.innerHTML = '';
+          descriptionErrorMessage.innerHTML = '';
         }
       } else {
         window.location.href = 'postEntries.html';
