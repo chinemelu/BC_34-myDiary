@@ -8,8 +8,8 @@ import db from '../../models/db';
 class DiaryController {
   /**
      * @description get all diary entries
-     * @param {*} req http request
-     * @param {*} res http response
+     * @param {string} req http request
+     * @param {string} res http response
      * @returns  {Array} returns an array
      */
   static getAllEntries(req, res) {
@@ -27,7 +27,8 @@ class DiaryController {
             });
           } else {
             res.status(200).json({
-              message: 'There are no available diary entries'
+              message: 'There are no available diary entries',
+              data: results.rows
             });
           }
         });

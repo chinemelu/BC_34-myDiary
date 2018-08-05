@@ -9,11 +9,11 @@ import authenticateUser from '../../middlewares/authenticateUser';
 /**
  * @class diarycontroller
  */
-class diarycontroller {
+class DiaryController {
 /**
    * @description modify diary entry
-   * @param {*} req http request
-   * @param {*} res http response
+   * @param {string} req http request
+   * @param {string} res http response
    * @returns {JSON} returns a JSON object
    */
   static modifyEntry(req, res) {
@@ -63,4 +63,4 @@ class diarycontroller {
     });
   }
 }
-export default diarycontroller;
+export default DiaryController;

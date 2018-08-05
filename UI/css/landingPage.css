@@ -13,7 +13,7 @@ body {
 
 /* create pseudo element to add opacity to background image */
 body::before {
-	background: url(diary-pic.jpg) no-repeat;
+	background: url(../images/diary-pic.jpg) no-repeat;
 	background-size: cover;
 	display: block;
 	content: '';
@@ -413,9 +413,9 @@ nav a {
 	position: absolute;
 	z-index: 2;
 	width: 0; 
-    height: 0; 
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
+	height: 0; 
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
 	border-bottom: 10px solid rgba(215,102,102,0.9);
 	top: -7px;
 	left: 22px;

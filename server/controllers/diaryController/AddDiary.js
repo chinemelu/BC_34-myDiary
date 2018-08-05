@@ -9,8 +9,8 @@ import db from '../../models/db';
 class DiaryController {
 /**
    * @description add diary entry
-   * @param {*} req http request
-   * @param {*} res http response
+   * @param {string} req http request
+   * @param {string} res http response
    * @returns {JSON} returns a JSON object
    */
   static addEntry(req, res) {
