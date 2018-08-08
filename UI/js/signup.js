@@ -83,12 +83,8 @@ const registerUser = (e) => {
       'Content-Type': 'application/json; charset=utf-8',
     }
   };
-
- 
   fetch(signupUrl, fetchParameters)
-    .then((res) => {
-      return res.json();
-    })
+    .then(res => res.json())
     .then((user) => {
       if (user.errors) {
         if (user.errors.username) {
@@ -112,14 +108,11 @@ const registerUser = (e) => {
           emailErrorMessage.classList.add('is-visible');
         }
       } else {
-        window.localStorage.setItem('token', user.token)
+        window.localStorage.setItem('token', user.token);
         window.location.href = 'postEntries.html';
       }
     })
-    .catch((error) => {
-      return error;
-    });
+    .catch(error => error);
 };
 
 signupButton.addEventListener('click', registerUser);
-

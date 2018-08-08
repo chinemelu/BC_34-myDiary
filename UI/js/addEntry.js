@@ -3,7 +3,7 @@ const title = document.getElementById('title-diary-entry'),
   description = document.getElementById('description-diary-entry'),
   descriptionErrorMessage = document.getElementById('description-error-message'),
   // privacy = document.querySelector('privacy-diary-entry'),
-  saveEntryBtn = document.querySelector('.save-diary-entry');
+  saveEntryBtn = document.querySelector('#save-diary-entry');
 
 
 const postDiaryEntry = (e) => {
@@ -29,9 +29,7 @@ const postDiaryEntry = (e) => {
   };
 
   fetch(postDiaryEntryUrl, fetchParameters)
-    .then((res) => {
-      return res.json();
-    })
+    .then(res => res.json())
     .then((entry) => {
       if (entry.errors) {
         if (entry.errors.title) {
@@ -48,9 +46,7 @@ const postDiaryEntry = (e) => {
         window.location.href = 'postEntries.html';
       }
     })
-    .catch((error) => {
-      return error;
-    });
+    .catch(error => error);
 };
 
 saveEntryBtn.addEventListener('click', postDiaryEntry);
