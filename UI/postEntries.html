@@ -44,12 +44,13 @@
 				<!-- Beginning of new diary entry section -->
 				
 				<div class="diary-entry-section" id="diary-entry-section">
-				
 					<div class="image-upload-text">
 						<p>Featured image  <input type="file" name="pic" accept="image/*"></p>
 					</div>
 				
 					<div class="create-diary-entry">
+						<span class="edit-entry-success-msg"></span>
+					
 						<input name="title" type="text" class="title-diary-entry" id="title-diary-entry" placeholder="Title">
 						<span class="cd-error-message" id="title-error-message"></span>
 
@@ -88,76 +89,7 @@
 							<input type="button" value="Search" class="search-button">
 						</form>
 					</div>
-					
 					<div class="entry-list-data" id="entry-list-data">
-						<table>
-							<tr class="border-bottom">
-								<th>Date</th>
-								<th>Entry</th>
-								<th>Action</th>
-							</tr>
-							
-							<tr class="border-bottom">
-								<td>2018-07-06 23:02:59</td>
-								<td>
-									<div class="entry-title">
-									<a href="fetchEntry.html">My Entry</a>
-									</div>
-								</td>
-								<td>
-									<div class="actions">
-										<div class="edit-entry">
-											<i class="fa fa-edit"></i>
-										</div>
-										
-										<div class="delete-entry">
-											<i class="fa fa-times"></i>
-										</div>
-									</div>
-								</td>
-							</tr>
-							
-							<tr class="border-bottom"> 
-								<td>2018-08-06 11:00:00</td>
-								<td>
-									<div class="entry-title">
-										<a href="fetchEntry.html">Introduction</a>
-									</div>
-								</td>
-								<td>
-									<div class="actions">
-										<div class="edit-entry">
-											<i class="fa fa-edit"></i>
-										</div>
-										
-										<div class="delete-entry">
-											<i class="fa fa-times"></i>
-										</div>
-									</div>
-								</td>
-							</tr>
-							
-							<tr class="border-bottom">
-								<td>2018-09-06 14:00:00</td>
-								<td>
-									<div class="entry-title">
-										<a href="fetchEntry.html">My Age</a>
-									</div>
-								</td>
-								<td>
-									<div class="actions">
-										<div class="edit-entry">
-											<i class="fa fa-edit"></i>
-										</div>
-										
-										<div class="delete-entry">
-											<i class="fa fa-times"></i>
-										</div>
-									</div>
-								</td>
-
-							</tr>
-						</table>
 					</div>
 				</div>
 			</div>

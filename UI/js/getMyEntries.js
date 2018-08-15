@@ -32,7 +32,7 @@ const getMyEntries = () => {
               <td>
                 <div class="actions">
                   <div class="edit-entry">
-                    <i class="fa fa-edit"></i>
+                   <a href=postEntries.html?id=${entry.id}><i class="fa fa-edit"></i></a>
                   </div>
                   
                   <div class="delete-entry">
