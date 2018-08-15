@@ -298,8 +298,8 @@ nav a {
 	position: absolute;
 	left: 15px;
 	top: 50%;
-    bottom: auto;
-    transform: translateY(-50%);
+  bottom: auto;
+  transform: translateY(-50%);
 	height: 20px;
 	width: 20px;
 	overflow: hidden;
